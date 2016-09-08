@@ -1,0 +1,43 @@
+<div class="col-md-12 min-height-600">
+
+	<div class="col-md-6">
+	<legend>Add Store</legend>
+	<form>
+	  <div class="form-group">
+	    <label for="name">Name:</label>
+	    <input type="text" name="name" class="form-control" id="name" placeholder="Enter Store Name">
+	  </div>
+	  <div class="form-group">
+	    <label for="owner">Owner:</label>
+	    <input type="text" name="owner" class="form-control" id="owner" placeholder="Enter Store Owner">
+	  </div>
+	  <div class="form-group">
+	    <label for="pwd">Type:</label>
+	    <select name="type" class="form-control">
+	    	<option value="Medical">Medical</option>
+	    	<option value="General">General</option>
+	    	<option value="Laundry">Laundry</option>
+	    	<option value="Other">Other</option>
+	    	
+	    </select>
+	  </div>
+	  <div class="form-group">
+	    <label for="address">Address:</label>
+	    <textarea rows="4" name="address" disabled="disabled" class="form-control" id="address" placeholder="Select address from map"></textarea>
+	  </div>
+	  <div class="form-group">
+	    <label for="coordinates">Coordinates:</label>
+	    <input type="text" name="coordinates" disabled="disabled"  class="form-control" id="coordinates" placeholder="">
+	  </div>
+	  
+	  <button type="submit" class="	btn btn-success">Submit</button>
+	</form>
+	</div>
+	
+	<div class="col-md-6">
+		<ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'>
+		<ui-gmap-marker idKey="vm.marker.id" coords='vm.marker.coords' options="vm.marker.options" click='vm.locClick()'></ui-gmap-marker>
+		</ui-gmap-google-map>
+		
+	</div>
+</div>

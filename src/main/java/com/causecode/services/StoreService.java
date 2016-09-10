@@ -8,4 +8,6 @@ public interface StoreService {
 	public List<Store> getAllStores();
 
 	public Store getStore(Long id);
+
+	public Store saveStore(Store store);
 }

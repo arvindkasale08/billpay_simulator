@@ -1,7 +1,7 @@
 (function(){
 
    "use strict";
-   var app = angular.module("store-locator",["ui.router","uiGmapgoogle-maps"]);
+   var app = angular.module("store-locator",["ui.router","ngResource","uiGmapgoogle-maps","ui-notification"]);
 
    app.config(["$stateProvider","$urlRouterProvider",function($stateProvider, $urlRouterProvider){
 
@@ -12,6 +12,7 @@
        url : "/",
        views:{
          "header" : {templateUrl : "web-resources/client/views/common/header.html"},
+         "body" : {templateUrl : "web-resources/client/views/store/list.html", controller : "StoresController as vm"},
          "footer" : {templateUrl : "web-resources/client/views/common/footer.html"}
        }
      });
@@ -24,6 +25,15 @@
          "footer" : {templateUrl : "web-resources/client/views/common/footer.html"}
        }
      });
+     
+     $stateProvider.state("stores/list",{
+         url : "/stores/list",
+         views:{
+           "header" : {templateUrl : "web-resources/client/views/common/header.html"},
+           "body" : {templateUrl : "web-resources/client/views/store/list.html", controller : "StoresController as vm"},
+           "footer" : {templateUrl : "web-resources/client/views/common/footer.html"}
+         }
+       });
 
 
    }]);

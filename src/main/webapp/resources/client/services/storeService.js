@@ -19,6 +19,7 @@
 			vm.map = ConfigService.newInstance().maps.defaultConfig;
 			vm.marker = ConfigService.newInstance().maps.defaultMarker;
 			vm.store = Store.createInstance();
+			vm.refresh = true;
 			if(id)
 			{
 				getStore(id).$promise.then(function(resp){
@@ -83,7 +84,7 @@
 		function searchStore(geocoder, vm){
 			 geocoder.geocode({'address': vm.search.pincode}, function(results, status) {
 	            	if (status === 'OK') {
-	            		console.log(results);
+	            		//console.log(results);
 	                  if(results[0]){
 	                	  /*Fetch the address lat long based on pincode*/
 	                	  var lat = results[0].geometry.location.lat();

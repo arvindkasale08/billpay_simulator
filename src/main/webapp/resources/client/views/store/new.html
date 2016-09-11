@@ -3,24 +3,27 @@
 	<div class="col-md-6">
 	<legend ng-if="vm.id==null">Add Store</legend>
 	<legend ng-if="vm.id!=null">Edit Store</legend>
-	<form>
+	<form name="store">
 	  <div class="form-group">
 	    <label for="name">Name:</label>
-	    <input type="text" ng-model="vm.store.name" name="name" class="form-control" id="name" placeholder="Enter Store Name">
+	    <input required type="text" ng-model="vm.store.name" name="name" class="form-control" id="name" placeholder="Enter Store Name">
+	    <span ng-show="!store.name.$valid && store.name.$touched" class="form-error">Name is required. </span>
 	  </div>
 	  <div class="form-group">
 	    <label for="owner">Owner:</label>
-	    <input type="text" ng-model="vm.store.owner" name="owner" class="form-control" id="owner" placeholder="Enter Store Owner">
+	    <input required ng-pattern="/^[a-zA-Z\s]*$/" type="text" ng-model="vm.store.owner" name="owner" class="form-control" id="owner" placeholder="Enter Store Owner">
+	    <span ng-show="!store.owner.$valid && store.owner.$touched" class="form-error">Owner is required. </span>
 	  </div>
 	  <div class="form-group">
 	    <label for="pwd">Type:</label>
-	    <select ng-model="vm.store.type" name="type" class="form-control">
+	    <select required ng-model="vm.store.type" name="type" class="form-control">
 	    	<option value="Medical">Medical</option>
 	    	<option value="General">General</option>
 	    	<option value="Laundry">Laundry</option>
 	    	<option value="Other">Other</option>
 	    	
 	    </select>
+	    <span ng-show="!store.type.$valid && store.type.$touched" class="form-error">Type is required. </span>
 	  </div>
 	  <div class="form-group">
 	    <label for="address">Address:</label>
@@ -35,7 +38,7 @@
 	    <input type="text" name="longitude" ng-model="vm.store.longitude" disabled="disabled"  class="form-control" id="longitude" placeholder="">
 	  </div>
 	  
-	  <a ng-click="vm.saveStore()" type="submit" class="	btn btn-success">Submit</a>
+	  <button ng-disabled="!store.$valid" ng-click="vm.saveStore()" type="submit" class="	btn btn-success">Submit</button>
 	</form>
 	</div>
 	

@@ -74,3 +74,4 @@ ul.nav li a.active:hover{
 }
 .margin-top-20{margin-top: 20px;}
 .margin-left-20{margin-left: 20px;}
+.form-error{color: red; line-height: 25px;padding-left: 5px;}

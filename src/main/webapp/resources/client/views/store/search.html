@@ -23,7 +23,7 @@
 		<ui-gmap-google-map options="{scaleControl : true}" refresh="vm.refresh" center='vm.map.center' zoom='vm.map.zoom'>
 		<ui-gmap-marker idKey="vm.marker.id" events="vm.marker.events" coords='vm.marker.coords' options="vm.marker.options" click='vm.locClick()'></ui-gmap-marker>
 		
-		<ui-gmap-marker ng-repeat="store in vm.stores" idKey="store.id" coords='{latitude: store.latitude, longitude: store.longitude}'></ui-gmap-marker>
+		<ui-gmap-marker events="vm.marker.events" ng-repeat="store in vm.stores" idKey="store.id" options="{icon : '/store-locator/web-resources/static/images/shop_48.png', title : store.name}" coords='{latitude: store.latitude, longitude: store.longitude}'></ui-gmap-marker>
 		
 		
 		<ui-gmap-circle center='{latitude: vm.marker.coords.latitude, longitude: vm.marker.coords.longitude}' radius='vm.search.value*1000' fill='vm.circle.fill' stroke='vm.circle.stroke'>

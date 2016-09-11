@@ -1,6 +1,6 @@
 **# CauseCode Challenge - Store Locator. #**
 
-User Story:-
+**User Story:-**
 
 As a store-locator I want to: 
 
@@ -14,10 +14,10 @@ Create a rest API with following:
 
 **Attribution:**
 
-**Bootstrap Starter Theme CSS** - https://blackrockdigital.github.io/startbootstrap-shop-item/# 
+Bootstrap Starter Theme CSS - https://blackrockdigital.github.io/startbootstrap-shop-item/# 
 
-**Notification** - https://github.com/alexcrack/angular-ui-notification
+Notification - https://github.com/alexcrack/angular-ui-notification
 
-**Angular Datatables** - https://l-lin.github.io/angular-datatables/#/gettingStarted
-**
-Geolocation Java** - http://janmatuschek.de/LatitudeLongitudeBoundingCoordinates
+Angular Datatables - https://l-lin.github.io/angular-datatables/#/gettingStarted
+
+Geolocation Java - http://janmatuschek.de/LatitudeLongitudeBoundingCoordinates

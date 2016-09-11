@@ -1,7 +1,8 @@
 <div class="col-md-12 min-height-600">
 
 	<div class="col-md-6">
-	<legend>Add Store</legend>
+	<legend ng-if="vm.id==null">Add Store</legend>
+	<legend ng-if="vm.id!=null">Edit Store</legend>
 	<form>
 	  <div class="form-group">
 	    <label for="name">Name:</label>
@@ -26,8 +27,12 @@
 	    <textarea rows="4" name="address" ng-model="vm.store.address" class="form-control" id="address" placeholder="Select address from map"></textarea>
 	  </div>
 	  <div class="form-group">
-	    <label for="coordinates">Coordinates:</label>
-	    <input type="text" name="coordinates" ng-model="vm.store.coordinates" disabled="disabled"  class="form-control" id="coordinates" placeholder="">
+	    <label for="coordinates">Latitude:</label>
+	    <input type="text" name="latitude" ng-model="vm.store.latitude" disabled="disabled"  class="form-control" id="latitude" placeholder="">
+	  </div>
+	  <div class="form-group">
+	    <label for="coordinates">Longitude:</label>
+	    <input type="text" name="longitude" ng-model="vm.store.longitude" disabled="disabled"  class="form-control" id="longitude" placeholder="">
 	  </div>
 	  
 	  <a ng-click="vm.saveStore()" type="submit" class="	btn btn-success">Submit</a>
@@ -35,7 +40,7 @@
 	</div>
 	
 	<div class="col-md-6">
-		<ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'>
+		<ui-gmap-google-map options="{scaleControl : true}" refresh="vm.refresh" center='vm.map.center' zoom='vm.map.zoom'>
 		<ui-gmap-marker idKey="vm.marker.id" events="vm.marker.events" coords='vm.marker.coords' options="vm.marker.options" click='vm.locClick()'></ui-gmap-marker>
 		</ui-gmap-google-map>
 		

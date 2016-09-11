@@ -1,6 +1,9 @@
 package com.causecode.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +26,9 @@ public class StoresController {
 	@Autowired
 	private StoreService storeService;
 
-	@RequestMapping(value="/api/stores/", method = RequestMethod.GET)
+	@RequestMapping(value="/api/stores", method = RequestMethod.GET)
 	public ResponseEntity<List<Store>> getStores(){
+		logger.debug("Fetching all stores from database");
 		List<Store> stores = storeService.getAllStores();
 		return new ResponseEntity<List<Store>>(stores, HttpStatus.OK);
 	}
@@ -38,8 +42,27 @@ public class StoresController {
 	
 	@RequestMapping(value="/api/stores/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Store> getStore(@PathVariable("id") Long id){
+		logger.debug("Fetching store with id "+id+" from database");
 		Store store = storeService.getStore(id);
-		return new ResponseEntity<Store>(store, HttpStatus.OK);
+		logger.debug("Store value is: "+store);
+		return new ResponseEntity<Store>(store, store==null ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/api/stores/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Boolean> deleteStore(@PathVariable("id") Long id){
+		logger.debug("Deleting store with id "+id+" from database");
+		Boolean flag = storeService.deleteStore(id);
+		return new ResponseEntity<Boolean>(flag, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/api/stores/search", method = RequestMethod.GET)
+	public ResponseEntity<List<Store>> searchStore(HttpServletRequest request){
+		Double latitude = Double.valueOf(request.getParameter("lat"));
+		Double longitude = Double.valueOf(request.getParameter("lng"));
+		Double radius = Double.valueOf(request.getParameter("radius"));
+		logger.debug("Searching stores within "+radius+"km from lat "+latitude+"long "+longitude+" from database");
+		List<Store> list = storeService.searchStores(latitude, longitude, radius);
+		return new ResponseEntity<List<Store>>(list, HttpStatus.OK);
 	}
 	
 }

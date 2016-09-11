@@ -1,7 +1,7 @@
 (function(){
 
    "use strict";
-   var app = angular.module("store-locator",["ui.router","ngResource","uiGmapgoogle-maps","ui-notification"]);
+   var app = angular.module("store-locator",["ui.router","ngResource","uiGmapgoogle-maps","ui-notification","datatables","rzModule"]);
 
    app.config(["$stateProvider","$urlRouterProvider",function($stateProvider, $urlRouterProvider){
 
@@ -12,7 +12,7 @@
        url : "/",
        views:{
          "header" : {templateUrl : "web-resources/client/views/common/header.html"},
-         "body" : {templateUrl : "web-resources/client/views/store/list.html", controller : "StoresController as vm"},
+         "body" : {templateUrl : "web-resources/client/views/store/list.html", controller : "AjaxStoresController as vm"},
          "footer" : {templateUrl : "web-resources/client/views/common/footer.html"}
        }
      });
@@ -26,14 +26,36 @@
        }
      });
      
+     
+     
      $stateProvider.state("stores/list",{
          url : "/stores/list",
          views:{
            "header" : {templateUrl : "web-resources/client/views/common/header.html"},
-           "body" : {templateUrl : "web-resources/client/views/store/list.html", controller : "StoresController as vm"},
+           "body" : {templateUrl : "web-resources/client/views/store/list.html", controller : "AjaxStoresController as vm"},
            "footer" : {templateUrl : "web-resources/client/views/common/footer.html"}
          }
        });
+     
+     $stateProvider.state("stores/search",{
+         url : "/stores/search",
+         views:{
+           "header" : {templateUrl : "web-resources/client/views/common/header.html"},
+           "body" : {templateUrl : "web-resources/client/views/store/search.html", controller : "StoresSearchController as vm"},
+           "footer" : {templateUrl : "web-resources/client/views/common/footer.html"}
+         }
+       });
+     
+     $stateProvider.state("stores/show",{
+         url : "/stores/:id",
+         views:{
+           "header" : {templateUrl : "web-resources/client/views/common/header.html"},
+           "body" : {templateUrl : "web-resources/client/views/store/new.html", controller : "StoresController as vm"},
+           "footer" : {templateUrl : "web-resources/client/views/common/footer.html"}
+         }
+       });
+     
+     
 
 
    }]);

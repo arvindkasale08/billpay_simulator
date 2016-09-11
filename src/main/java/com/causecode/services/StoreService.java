@@ -10,4 +10,8 @@ public interface StoreService {
 	public Store getStore(Long id);
 
 	public Store saveStore(Store store);
+
+	public Boolean deleteStore(Long id);
+
+	public List<Store> searchStores(Double latitude, Double longitude, Double radius);
 }

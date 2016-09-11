@@ -1,1 +1,29 @@
-list
+<div class="col-md-12 min-height-600">
+
+	<div class="col-md-12">
+	<legend>List Stores</legend>
+	<table datatable="ng" dt-options="vm.dtOptions" class="row-border hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Owner</th>
+            <th>Address</th>
+            <th>Type</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="store in ::vm.stores">
+            <td><a ui-sref="stores/show({id : store.id})">{{store.id}}</a></td>
+            <td>{{store.name}}</td>
+            <td>{{store.owner}}</td>
+            <td>{{store.address}}</td>
+            <td>{{store.type}}</td>
+            <td><a class="data-tbl-delete" href="#" ng-click="vm.deleteStore(store.id)" title="Delete"></a></td>
+        </tr>
+        </tbody>
+    </table>
+	</div>
+	
+</div>

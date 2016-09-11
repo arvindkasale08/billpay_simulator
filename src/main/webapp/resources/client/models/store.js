@@ -10,7 +10,8 @@
 			str.owner = "";
 			str.type = "";
 			str.address = ConfigService.newInstance().maps.defaultMarker.address;
-			str.coordinates = ConfigService.newInstance().maps.defaultMarker.coords.latitude+","+ConfigService.newInstance().maps.defaultMarker.coords.longitude;
+			str.latitude = ConfigService.newInstance().maps.defaultMarker.coords.latitude;
+			str.longitude = ConfigService.newInstance().maps.defaultMarker.coords.longitude;
 			return str;
 		}
 		return {

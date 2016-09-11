@@ -1,6 +1,7 @@
 **# CauseCode Challenge - Store Locator. #**
 
-User Story:-<br>
+User Story:-
+
 As a store-locator I want to: 
 Create a REST API:-
 Create a rest API with following:

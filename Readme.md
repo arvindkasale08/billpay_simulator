@@ -12,6 +12,15 @@ Create a rest API with following:
 
 2. Find a store within "x" miles of a USA zipcode
 
+**Steps to run the application**
+1. Clone the repository.
+2. Create a database with name "store-locator".
+3. Import the dump present at the root level by name "dump.sql" in mysql.
+4. Change the database username / pwd in app.properties in "src/main/resources".
+5. Run "mvn clean install -X" at root level.
+6. Deploy the generated war in Tomcat 7.
+7. Access the application using url http://{host}:{port}/store-locator/#/
+
 **Attribution:**
 
 Bootstrap Starter Theme CSS - https://blackrockdigital.github.io/startbootstrap-shop-item/# 

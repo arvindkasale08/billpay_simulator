@@ -1,4 +1,4 @@
-**# CauseCode Challenge - Store Locator. #**
+#  CauseCode Challenge - Store Locator. # 
 
 **User Story:-**
 

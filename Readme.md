@@ -18,7 +18,7 @@ Create a rest API with following:
 
 2. Create a database with name "store-locator".
 
-3. Import the dump present at the root level by name "dump.sql" in mysql.
+3. Import the dump present at the root level with name "dump.sql" in mysql.
 
 4. Change the database username / pwd in app.properties in "src/main/resources".
 

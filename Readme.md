@@ -4,8 +4,6 @@
 
 As a store-locator user I want to: 
 
-Create a REST API:-
-
 Create a rest API with following:
 
 1. Create/Update/Delete a store

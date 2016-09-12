@@ -70,7 +70,7 @@ public class StoreDaoImpl implements StoreDao {
 	public List<Store> searchStores(GeoLocation location, Double radius) {
 		GeoLocation[] boundingCoordinates =	location.boundingCoordinates(radius, CCConstants.EARTH_RADIUS);
 		boolean meridian180WithinDistance =	boundingCoordinates[0].getLongitudeInRadians() > boundingCoordinates[1].getLongitudeInRadians();
-		Query query = getSession().createSQLQuery("SELECT * FROM stores WHERE (RADIANS(latitude) >= :a AND RADIANS(latitude) <= :b) AND (RADIANS(longitude) >= :c " +(meridian180WithinDistance ? "OR" : "AND") + " RADIANS(longitude) <= :d) AND " +"acos(sin(:e) * sin(RADIANS(latitude)) + cos(:f) * cos(RADIANS(latitude)) * cos(RADIANS(longitude) - :g)) <= :h")
+		Query query = getSession().createSQLQuery("SELECT * FROM stores WHERE status = 1 AND (RADIANS(latitude) >= :a AND RADIANS(latitude) <= :b) AND (RADIANS(longitude) >= :c " +(meridian180WithinDistance ? "OR" : "AND") + " RADIANS(longitude) <= :d) AND " +"acos(sin(:e) * sin(RADIANS(latitude)) + cos(:f) * cos(RADIANS(latitude)) * cos(RADIANS(longitude) - :g)) <= :h")
 				.addEntity(Store.class)
 				.setParameter("a", boundingCoordinates[0].getLatitudeInRadians())
 				.setParameter("b", boundingCoordinates[1].getLatitudeInRadians())

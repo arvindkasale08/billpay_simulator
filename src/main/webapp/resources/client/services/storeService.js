@@ -26,7 +26,12 @@
 					vm.map = ConfigService.newInstance().maps.defaultConfig;
 					vm.marker = ConfigService.newInstance().maps.defaultMarker;
 					vm.store = resp;
+					vm.marker.coords= {latitude: vm.store.latitude,longitude: vm.store.longitude};
+					vm.map.center = {latitude: vm.store.latitude,longitude: vm.store.longitude};
 					vm.refresh = true;
+				},function(){
+					$state.go("stores/list");
+					Notification.error("Access Denied!");
 				});
 			}
 			

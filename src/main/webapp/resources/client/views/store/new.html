@@ -12,16 +12,17 @@
 	  <div class="form-group">
 	    <label for="owner">Owner:</label>
 	    <input required ng-pattern="/^[a-zA-Z\s]*$/" type="text" ng-model="vm.store.owner" name="owner" class="form-control" id="owner" placeholder="Enter Store Owner">
-	    <span ng-show="!store.owner.$valid && store.owner.$touched" class="form-error">Owner is required. </span>
+	    <span ng-show="store.owner.$error.required && store.owner.$touched" class="form-error">Owner is required. </span>
+	    <span ng-show="store.owner.$error.pattern && store.owner.$touched" class="form-error">Owner can only contain alphabets. </span>
 	  </div>
 	  <div class="form-group">
 	    <label for="pwd">Type:</label>
 	    <select required ng-model="vm.store.type" name="type" class="form-control">
-	    	<option value="Medical">Medical</option>
-	    	<option value="General">General</option>
+	    	<option value="Medical Store">Medical Store</option>
+	    	<option value="General Store">General Store</option>
 	    	<option value="Laundry">Laundry</option>
+	    	<option value="Telecom Store">Telecom Store</option>
 	    	<option value="Other">Other</option>
-	    	
 	    </select>
 	    <span ng-show="!store.type.$valid && store.type.$touched" class="form-error">Type is required. </span>
 	  </div>

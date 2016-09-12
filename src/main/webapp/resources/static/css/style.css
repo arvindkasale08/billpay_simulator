@@ -46,7 +46,7 @@ ul.nav li a.active:hover{
     margin-bottom: 5px;
 }
 .mod-form-grp{
-	width:55%;
+	width:47%;
 }
 .rzslider .rz-pointer {
     top: -7px;
@@ -74,4 +74,4 @@ ul.nav li a.active:hover{
 }
 .margin-top-20{margin-top: 20px;}
 .margin-left-20{margin-left: 20px;}
-.form-error{color: red; line-height: 25px;padding-left: 5px;}
+.form-error{color: red; line-height: 25px;padding-left: 5px;float: right}

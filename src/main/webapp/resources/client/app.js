@@ -66,6 +66,8 @@
 	        key: 'AIzaSyBNZ0gFe-dZ9uKweGbr5HDpSmcJAGKFeVs',
 	        libraries: 'weather,geometry,visualization'
 	    });
-	})
+	});
+   
+   
 
  }());

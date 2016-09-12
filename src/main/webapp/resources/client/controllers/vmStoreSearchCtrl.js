@@ -1,7 +1,7 @@
 (function(){
 	"use strict";
 	var app = angular.module("store-locator");
-	function storesSearchController(StoreService, uiGmapIsReady, $stateParams, $scope){
+	function storesSearchController(StoreService, uiGmapIsReady,$state, $stateParams, $scope){
 		var vm = this;
 		vm.id = $stateParams.id;
 		vm.search = {
@@ -27,6 +27,9 @@
 		});
 		
 		vm.marker.events = {
+				click : function (marker, eventName, args) {
+					$state.go("stores/show",{id : marker.key});
+				},
 		        dragend: function (marker, eventName, args) {
 		            var lat = marker.getPosition().lat();
 		            var lon = marker.getPosition().lng();

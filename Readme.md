@@ -2,7 +2,7 @@
 
 **User Story:-**
 
-As a store-locator I want to: 
+As a store-locator user I want to: 
 
 Create a REST API:-
 

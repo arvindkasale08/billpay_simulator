@@ -18,7 +18,7 @@ Create a rest API with following:
 
 3. Import the dump present at the root level with name "dump.sql" in mysql.
 
-4. Change the database username / pwd in app.properties in "src/main/resources".
+4. Change the database username / pwd in applicationContext.xml in "src/main/resources".
 
 5. Run "mvn clean install -X" at root level.
 

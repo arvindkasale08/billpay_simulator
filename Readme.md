@@ -1,5 +1,12 @@
 #  CauseCode Challenge - Store Locator. 
 
+** BILLPAY SIMULATOR **
+
+http://localhost:<port>/store-locator/services/setup/SetupService
+http://localhost:<port>/store-locator/services/enquiry/EnquiryService
+http://localhost:<port>/store-locator/services/manage/ManageService
+http://localhost:<port>/store-locator/services/payment/PaymentService
+
 **User Story:-**
 
 As a store-locator user I want to: 

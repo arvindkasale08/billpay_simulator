@@ -2,11 +2,11 @@
 
 ** BILLPAY SIMULATOR **
 
-http://localhost:<port>/store-locator/services/setup/SetupService
-http://localhost:<port>/store-locator/services/enquiry/EnquiryService
-http://localhost:<port>/store-locator/services/manage/ManageService
-http://localhost:<port>/store-locator/services/payment/PaymentService
-
+<pom.billpay.setup.service.url>http://localhost:5050/store-locator/services/setup/SetupService</pom.billpay.setup.service.url>
+<pom.billpay.enquiry.service.url>http://localhost:5050/store-locator/services/enquiry/EnquiryService</pom.billpay.enquiry.service.url>
+<pom.billpay.manage.service.url>http://localhost:5050/store-locator/services/manage/ManageService</pom.billpay.manage.service.url>
+<pom.billpay.payment.service.url>http://localhost:5050/store-locator/services/payment/PaymentService</pom.billpay.payment.service.url>
+				
 **User Story:-**
 
 As a store-locator user I want to: 

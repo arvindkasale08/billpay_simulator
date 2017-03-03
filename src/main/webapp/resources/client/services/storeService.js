@@ -30,8 +30,8 @@
 					vm.map.center = {latitude: vm.store.latitude,longitude: vm.store.longitude};
 					vm.refresh = true;
 				},function(){
-					$state.go("stores/list");
-					Notification.error("Access Denied!");
+					//$state.go("stores/list");
+					//Notification.error("Access Denied!");
 				});
 			}
 			

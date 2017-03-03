@@ -1,0 +1,100 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!--
+ * $Workfile:      $
+ * $Header:        $
+ * $Modtime:       $
+ * $Log:           $
+ *
+-->
+<xsd:schema targetNamespace = "http://telstra.com/payments/manage/v1/ManageRequest"
+	    xmlns:tns = "http://telstra.com/payments/manage/v1/ManageRequest"
+	    xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+	    elementFormDefault = "qualified"
+	    version="1.00">
+
+     <xsd:complexType name="Header">
+	<xsd:sequence>
+			<xsd:element name="serviceDomain"		nillable="false" type="xsd:string"/>
+			<xsd:element name="serviceClass"		nillable="false" type="xsd:string"/>
+			<xsd:element name="serviceId"     		nillable="false" type="xsd:string"/>
+			<xsd:element name="organisationId"		nillable="false" type="xsd:string"/>
+			<xsd:element name="systemId"			nillable="false" type="xsd:string"/>
+			<xsd:element name="subSystemId"			nillable="false" type="xsd:string"/>
+			<xsd:element name="user"			nillable="true"  type="xsd:string"/>
+			<xsd:element name="userType"			nillable="true"  type="xsd:string"/>
+			<xsd:element name="crn"				nillable="true"  type="xsd:string"/>
+			<xsd:element name="version"			nillable="false" type="xsd:string"/>            
+			<xsd:element name="timestamp"			nillable="false" type="xsd:dateTime"/>
+			<xsd:element name="security"			nillable="true"  type="tns:Security"/>
+	</xsd:sequence>
+      </xsd:complexType>       
+
+      <xsd:complexType name="Security">
+	<xsd:sequence>
+			<xsd:element name="serverId"			nillable="true" type="xsd:string"/>
+			<xsd:element name="systemSecurityToken"		nillable="true" type="xsd:string"/>
+			<xsd:element name="userSecurityToken"		nillable="true" type="xsd:string"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="FIMetaData">
+	<xsd:sequence>
+			<xsd:element name="finInstrumentReferenceType"	nillable="false" type="xsd:string"/>
+			<xsd:element name="finInstrumentReference"	nillable="false" type="xsd:string"/>
+			<xsd:element name="finInstrumentInstance"	nillable="true"  type="xsd:string"/>
+			<xsd:element name="reason"			nillable="true"  type="xsd:string"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="PaymentMethodDetails">
+          <xsd:sequence>
+			<xsd:element name="banType" 			nillable="true" type="xsd:string"/>
+			<xsd:element name="ban"        			nillable="true" type="xsd:string"/>
+			<xsd:element name="type"        		nillable="true" type="xsd:string"/>
+			<xsd:element name="amount"       		nillable="true" type="xsd:string"/>
+			<xsd:element name="dayOfMonth"     		nillable="true" type="xsd:string"/>
+			<xsd:element name="futureDate"     		nillable="true" type="xsd:string"/>
+			<xsd:element name="frequency"     		nillable="true" type="xsd:string"/>
+			<xsd:element name="rechargeInterval"     	nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+      </xsd:complexType>
+
+        <xsd:complexType name="PINManagement">
+          <xsd:sequence>
+			<xsd:element name="newPin" 			nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+      </xsd:complexType>
+	
+      <xsd:complexType name="EmailAddress">
+          <xsd:sequence>
+			<xsd:element name="email" 			nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+      </xsd:complexType>
+
+     <xsd:complexType name="AuthenticationDetails">
+           <xsd:sequence>
+                    <xsd:element name="verificationCode"   	        nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+
+     <xsd:complexType name="BRNDetails">
+           <xsd:sequence>
+                    <xsd:element name="brn"   				nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+
+        <xsd:complexType name="ManageReq">
+	 <xsd:sequence>
+			<xsd:element name="header"			nillable="false" type="tns:Header"/>
+			<xsd:element name="requestData"			nillable="false" type="tns:FIMetaData"/>
+			<xsd:element name="paymentMethodDetails"	nillable="true"  type="tns:PaymentMethodDetails"/>
+			<xsd:element name="pins"			nillable="true"  type="tns:PINManagement"/>
+			<xsd:element name="emailAddress"		nillable="true"  type="tns:EmailAddress"/>
+			<xsd:element name="authenticationDetails"	nillable="true"  type="tns:AuthenticationDetails"/>
+			<xsd:element name="brnDetails"			nillable="true"  type="tns:BRNDetails"/>
+	  </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:element name="ManageRequest" type="tns:ManageReq"/>
+
+</xsd:schema>

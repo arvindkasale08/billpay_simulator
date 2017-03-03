@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * $Workfile:      $
+ * $Header:        $
+ * $Modtime:       $
+ * $Log:           $
+ *
+-->
+
+<!-- ****************************************************************** -->
+<!--                                                                    -->
+<!--       This is the interface for the PANConversion methods.         -->
+<!--                                                                    -->
+<!-- ****************************************************************** -->
+
+<wsdl:definitions targetNamespace="http://telstra.com/payments/manage/v1"
+                  xmlns:tns="http://telstra.com/payments/manage/v1"
+		  xmlns:tns1="http://telstra.com/payments/manage/v1/ManageRequest"
+                  xmlns:tns2="http://telstra.com/payments/manage/v1/ManageResponse"
+                  xmlns:apachesoap="http://xml.apache.org/xml-soap"
+                  xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <!-- *********************************************************** -->
+    <!--                          Types                              -->
+    <!-- *********************************************************** -->
+    <wsdl:types>
+
+       <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://telstra.com/payments/manage/v1">
+            <xsd:import namespace="http://telstra.com/payments/manage/v1/ManageRequest" schemaLocation="Schemas/ManageRequest.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://telstra.com/payments/manage/v1">
+            <xsd:import  namespace="http://telstra.com/payments/manage/v1/ManageResponse" schemaLocation="Schemas/ManageResponse.xsd"/>
+        </xsd:schema>
+
+    </wsdl:types>
+
+
+    <!-- *********************************************************** -->
+    <!--                         Messages                            -->
+    <!-- *********************************************************** -->
+    <wsdl:message name="processManageRequestMessage">
+        <wsdl:part name="request" element="tns1:ManageRequest"/>
+    </wsdl:message>
+    <wsdl:message name="processManageResponseMessage">
+        <wsdl:part name="response" element="tns2:ManageResponse"/>
+    </wsdl:message>
+
+    <!-- *********************************************************** -->
+    <!--                         Port Types                          -->
+    <!-- *********************************************************** -->
+    <wsdl:portType name="Manage">
+
+        <wsdl:operation name="processManage">
+            <wsdl:input  message="tns:processManageRequestMessage"/>
+            <wsdl:output message="tns:processManageResponseMessage"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+    <!-- *********************************************************** -->
+    <!--                          Bindings                           -->
+    <!-- *********************************************************** -->
+    <wsdl:binding name="Manage_SOAP_Binding" type="tns:Manage">
+
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="processManage">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input>
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation> 
+
+    </wsdl:binding>
+
+    <!-- *********************************************************** -->
+    <!--                          Services                           -->
+    <!-- *********************************************************** -->
+    <wsdl:service name="Manage_Service">
+        <wsdl:port name="Manage_Service" binding="tns:Manage_SOAP_Binding">
+            <wsdlsoap:address location="http://localhost"/>
+        </wsdl:port>
+   </wsdl:service>
+
+</wsdl:definitions>

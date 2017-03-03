@@ -25,6 +25,7 @@
          "footer" : {templateUrl : "web-resources/client/views/common/footer.html"}
        }
      });
+
      
      
      
@@ -55,6 +56,14 @@
          }
        });
      
+     $stateProvider.state("card/register",{
+         url : "/bill-pay/register",
+         views:{
+           "header" : {templateUrl : "web-resources/client/views/common/header.html"},
+           "body" : {templateUrl : "web-resources/client/views/card/register.html", controller : "RegisterController as vm"},
+           "footer" : {templateUrl : "web-resources/client/views/common/footer.html"}
+         }
+       });
      
 
 

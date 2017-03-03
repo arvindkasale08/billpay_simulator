@@ -75,3 +75,19 @@ ul.nav li a.active:hover{
 .margin-top-20{margin-top: 20px;}
 .margin-left-20{margin-left: 20px;}
 .form-error{color: red; line-height: 25px;padding-left: 5px;float: right}
+.result-container {
+    background-color: #f7f7f7;
+    min-height: 400px;
+    border: 1px solid #aaa;
+		height: 500px;
+		overflow-y: auto;
+}
+.result-container .result {
+    display: inline-block;
+    min-width: 100px;
+    min-height: 25px;
+    margin: 10px 10px;
+    border: 1px solid #aaaaaa;
+    text-align: center;
+    background-color: #ffffff;
+}

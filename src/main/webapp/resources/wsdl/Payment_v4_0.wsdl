@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * $Workfile:   Payment_v3_0.wsdl  $
+ * $Header:   S:/tservdev/scm/billpay/archive/java/payment_v3_0/Payment_v3_0.wsvl   1.0   11 Jul 2011 23:21:58   d395418  $
+ * $Modtime:   27 May 2011 16:12:24  $
+ * $Log:   S:/tservdev/scm/billpay/archive/java/payment_v3_0/Payment_v3_0.wsvl  $ 
+* 
+*    Rev 1.0   11 Jul 2011 23:21:58   d395418
+* Initial revision.
+ *   
+ * 
+-->
+
+<!-- ****************************************************************** -->
+<!--                                                                    -->
+<!--  This is the interface for Financial Payment methods.              -->
+<!--                                                                    -->
+<!--  It includes the following methods:                                -->
+<!--                                                             	-->
+<!--  FinancialResponse processPayment(FinancialRequest  request );   -->
+<!--                                                                    -->
+<!-- ****************************************************************** -->
+<wsdl:definitions targetNamespace="http://telstra.com/payments/payment/v4"
+                  xmlns:tns="http://telstra.com/payments/payment/v4"
+		  xmlns:tns1="http://telstra.com/payments/payment/v4/PaymentRequest"
+                  xmlns:tns2="http://telstra.com/payments/payment/v4/PaymentResponse"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+		  xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+    <!-- *********************************************************** -->
+    <!--                          Types                              -->
+    <!-- *********************************************************** -->
+    <wsdl:types>
+
+       <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://telstra.com/payments/payment/v4">
+            <xsd:import namespace="http://telstra.com/payments/payment/v4/PaymentRequest" schemaLocation="Schemas/PaymentRequest_v4.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://telstra.com/payments/payment/v4">
+            <xsd:import  namespace="http://telstra.com/payments/payment/v4/PaymentResponse" schemaLocation="Schemas/PaymentResponse_v4.xsd"/>
+        </xsd:schema>
+
+    </wsdl:types>
+
+
+    <!-- *********************************************************** -->
+    <!--                         Messages                            -->
+    <!-- *********************************************************** -->
+    <wsdl:message name="paymentRequestMessage">
+        <wsdl:part name="request"  element="tns1:PaymentRequest"/>
+    </wsdl:message>
+    <wsdl:message name="paymentResponseMessage">
+        <wsdl:part name="response" element="tns2:PaymentResponse"/>
+    </wsdl:message>
+
+    <!-- *********************************************************** -->
+    <!--                         Port Types                          -->
+    <!-- *********************************************************** -->
+    <wsdl:portType name="Payment_v4_0">
+
+        <wsdl:operation name="processPayment">
+            <wsdl:input  message="tns:paymentRequestMessage"/>
+            <wsdl:output message="tns:paymentResponseMessage"/>
+        </wsdl:operation>
+    
+    </wsdl:portType>
+
+    <!-- *********************************************************** -->
+    <!--                          Bindings                           -->
+    <!-- *********************************************************** -->
+    <wsdl:binding name="Payment_v4_0_SOAP_Binding" type="tns:Payment_v4_0">
+
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="processPayment">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input>
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <!-- *********************************************************** -->
+    <!--                          Services                           -->
+    <!-- *********************************************************** -->
+    <wsdl:service name="PaymentService_v4_0">
+        <wsdl:port name="PaymentService_v4_0" binding="tns:Payment_v4_0_SOAP_Binding">
+            <wsdlsoap:address location="http://localhost"/>
+        </wsdl:port>
+   </wsdl:service>
+
+</wsdl:definitions>

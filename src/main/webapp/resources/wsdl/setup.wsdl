@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * $Workfile:   setup.wsdl  $
+ * $Header:   S:/tservdev/scm/billpay/archive/java/setup_v1_0/setup.wsvl   1.0   24 Oct 2011 20:14:34   d322042  $
+ * $Modtime:   14 Sep 2011 18:11:38  $
+ * $Log:   S:/tservdev/scm/billpay/archive/java/setup_v1_0/setup.wsvl  $
+ * 
+ *    Rev 1.0   24 Oct 2011 20:14:34   d322042
+ * Initial revision.
+-->
+
+<!-- **************************************************************************** -->
+<!--										  -->
+<!--  This is the Setup interface for Payment/Registrations .			  -->
+<!--										  -->
+<!--  It includes the following methods:					  -->
+<!--                                                             		  -->
+<!--  SetUpResponse processSetUp(SetUpRequest  request );   -->
+<!--										  -->
+<!-- **************************************************************************** -->
+<wsdl:definitions targetNamespace="http://telstra.com/payments/gimmi/setup"
+                  xmlns:tns="http://telstra.com/payments/gimmi/setup"
+		  xmlns:tns1="http://telstra.com/payments/gimmi/setup/SetUpRequest"
+                  xmlns:tns2="http://telstra.com/payments/gimmi/setup/SetUpResponse"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+		  xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+    <!-- *********************************************************** -->
+    <!--                          Documentation                      -->
+    <!-- *********************************************************** -->
+    <wsdl:documentation>
+	<version>1.00</version>
+    </wsdl:documentation>
+
+
+    <!-- *********************************************************** -->
+    <!--                          Types                              -->
+    <!-- *********************************************************** -->
+    <wsdl:types>
+
+       <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://telstra.com/payments/gimmi/setup">
+            <xsd:import namespace="http://telstra.com/payments/gimmi/setup/SetUpRequest"
+		                   schemaLocation="Schemas/SetUpRequest.xsd"/>
+        </xsd:schema>
+
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://telstra.com/payments/gimmi/setup">
+              <xsd:import  namespace="http://telstra.com/payments/gimmi/setup/SetUpResponse" 
+	                   schemaLocation="Schemas/SetUpResponse.xsd"/>
+        </xsd:schema>
+
+    </wsdl:types>
+
+
+    <!-- *********************************************************** -->
+    <!--                         Messages                            -->
+    <!-- *********************************************************** -->
+    <wsdl:message name="setupRequestMessage">
+        <wsdl:part name="request"  element="tns1:SetUpRequest"/>
+    </wsdl:message>
+    <wsdl:message name="setupResponseMessage">
+        <wsdl:part name="response" element="tns2:SetUpResponse"/>
+    </wsdl:message>
+
+    <!-- *********************************************************** -->
+    <!--                         Port Types                          -->
+    <!-- *********************************************************** -->
+    <wsdl:portType name="SetUp">
+
+        <wsdl:operation name="processSetUp">
+            <wsdl:input  message="tns:setupRequestMessage"/>
+            <wsdl:output message="tns:setupResponseMessage"/>
+        </wsdl:operation>
+    
+    </wsdl:portType>
+
+    <!-- *********************************************************** -->
+    <!--                          Bindings                           -->
+    <!-- *********************************************************** -->
+    <wsdl:binding name="SetUp_SOAP_Binding" type="tns:SetUp">
+
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="processSetUp">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input>
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <!-- *********************************************************** -->
+    <!--                          Services                           -->
+    <!-- *********************************************************** -->
+    <wsdl:service name="SetUp_Service">
+        <wsdl:port name="SetUp_Service" binding="tns:SetUp_SOAP_Binding">
+            <wsdlsoap:address location="http://localhost"/>
+        </wsdl:port>
+   </wsdl:service>
+
+</wsdl:definitions>

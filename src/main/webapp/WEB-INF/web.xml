@@ -11,6 +11,18 @@
 			/WEB-INF/spring/dispatcherServlet/servlet-context.xml
 		</param-value>
 	</context-param>
+	
+	
+	<!-- Apache CXF servlet -->
+    <servlet>
+        <servlet-name>CXFServlet</servlet-name>
+        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CXFServlet</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
 
 	
 
@@ -44,4 +56,6 @@
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	
 </web-app>

@@ -1,0 +1,119 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!--
+ * $Workfile:   SetUpRequest.xsd  $
+ * $Header:   S:/tservdev/scm/billpay/archive/java/setup_v1_0/Schemas/SetUpRequest.xsv   1.0   24 Oct 2011 20:15:00   d322042  $
+ * $Modtime:   24 Oct 2011 08:07:24  $
+ * $Log:   S:/tservdev/scm/billpay/archive/java/setup_v1_0/Schemas/SetUpRequest.xsv  $
+#  
+#     Rev 1.0   24 Oct 2011 20:15:00   d322042
+#  Initial revision.
+#  
+#    
+-->
+<xsd:schema targetNamespace = "http://telstra.com/payments/gimmi/setup/SetUpRequest"
+	    xmlns:tns = "http://telstra.com/payments/gimmi/setup/SetUpRequest"
+	    xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+	    elementFormDefault = "qualified"
+	    version="1.00">
+
+     <xsd:complexType name="Header">
+	<xsd:sequence>
+	    <xsd:element name="serviceDomain"			nillable="false" type="xsd:string"/>
+	    <xsd:element name="serviceClass"			nillable="false" type="xsd:string"/>
+            <xsd:element name="serviceId"     			nillable="false" type="xsd:string"/>
+            <xsd:element name="organisationId"			nillable="false" type="xsd:string"/>
+	    <xsd:element name="systemId"			nillable="false" type="xsd:string"/>
+	    <xsd:element name="subSystemId"			nillable="false" type="xsd:string"/>
+            <xsd:element name="user"				nillable="true"  type="xsd:string"/>
+            <xsd:element name="userType"			nillable="true"  type="xsd:string"/>
+	    <xsd:element name="crn"				nillable="true"  type="xsd:string"/>
+            <xsd:element name="version"				nillable="false" type="xsd:string"/>            
+	    <xsd:element name="timestamp"			nillable="false" type="xsd:dateTime"/>
+	    <xsd:element name="security"			nillable="true"  type="tns:Security"/>
+	</xsd:sequence>
+      </xsd:complexType>
+       
+      <xsd:complexType name="Security">
+	<xsd:sequence>
+             <xsd:element name="serverId"			nillable="true"  type="xsd:string"/>
+	     <xsd:element name="systemSecurityToken"		nillable="true"  type="xsd:string"/>
+             <xsd:element name="userSecurityToken"		nillable="true"  type="xsd:string"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="FiMetaData">
+	<xsd:sequence>
+	     <xsd:element name="finInstrumentType"		nillable="true" type="xsd:string"/>
+             <xsd:element name="finInstrumentReferenceType"	nillable="true" type="xsd:string"/>
+             <xsd:element name="finInstrumentReference"		nillable="true" type="xsd:string"/>
+             <xsd:element name="finInstrumentInstance"		nillable="true"  type="xsd:string"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="PaymentMetaData">
+	<xsd:sequence>
+	     <xsd:element name="paymentType"	        	nillable="true"  type="xsd:string"/>
+	     <xsd:element name="finInstrumentPresence"  	nillable="true"  type="xsd:string"/>
+             <xsd:element name="finInstrumentReferenceType"  	nillable="true"  type="xsd:string"/>
+             <xsd:element name="finInstrumentReference"      	nillable="true"  type="xsd:string"/>
+             <xsd:element name="finInstrumentInstance"  	nillable="true"  type="xsd:string"/>
+             <xsd:element name="amount"		        	nillable="true"  type="xsd:string"/>
+	     <xsd:element name="doDuplicateCheck"		nillable="true"  type="xsd:string"/>
+	     <xsd:element name="priority"			nillable="true"  type="xsd:string"/>
+	     <xsd:element name="rrn"		        	nillable="true"  type="xsd:string"/>
+	     <xsd:element name="statement"              	nillable="true"  type="xsd:string"/>
+	     <xsd:element name="authId"		        	nillable="true"  type="xsd:string"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="ServiceInfo">
+	<xsd:sequence>
+	     <xsd:element name="accountNumber"			nillable="true"  type="xsd:string"/>
+	     <xsd:element name="billNumber"			nillable="true"  type="xsd:string"/>
+	     <xsd:element name="secondaryNumber"		nillable="true"  type="xsd:string"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="CustomerDetails">
+	<xsd:sequence>
+	      <xsd:element name="firstName"			nillable="true" type="xsd:string"/>
+	      <xsd:element name="surName"			nillable="true" type="xsd:string"/>
+	      <xsd:element name="businessName"			nillable="true" type="xsd:string"/>
+	      <xsd:element name="abn"         			nillable="true" type="xsd:string"/>
+	      <xsd:element name="billingAddress1"		nillable="true" type="xsd:string"/>
+	      <xsd:element name="billingAddress2"		nillable="true" type="xsd:string"/>
+	      <xsd:element name="state"				nillable="true" type="xsd:string"/>
+	      <xsd:element name="postCode"			nillable="true" type="xsd:string"/>
+	      <xsd:element name="contactPhone"			nillable="true" type="xsd:string"/>
+	      <xsd:element name="emailAddress"			nillable="true" type="xsd:string"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="GimmiConsumerSegment">
+	<xsd:sequence>    
+             <xsd:element name="consumerReturnURL"		nillable="false" type="xsd:string"/>
+	     <xsd:element name="consumerReferenceType"		nillable="false" type="xsd:string"/>
+	     <xsd:element name="consumerReferenceID"		nillable="true"  type="xsd:string"/>
+	     <xsd:element name="consumerInfoMessage"		nillable="true"  type="xsd:string"/>
+	     <xsd:element name="transactionDescription"		nillable="true"  type="xsd:string"/>
+	     <xsd:element name="gimmiProxyType"			nillable="false" type="xsd:string"/>
+             <xsd:element name="userInteractionType"		nillable="false" type="xsd:string"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+
+      <xsd:complexType name="SetUpReq">
+	 <xsd:sequence>
+	     <xsd:element name="header"	        		nillable="false" type="tns:Header"/>
+	     <xsd:element name="gimmiConsumerSegment"		nillable="false" type="tns:GimmiConsumerSegment"/>
+	     <xsd:element name="fiMetaData"     		nillable="true"  type="tns:FiMetaData"/>
+	     <xsd:element name="paymentData"    		nillable="true"  type="tns:PaymentMetaData"/>
+	     <xsd:element name="custDetails"    		nillable="true"  type="tns:CustomerDetails"/>
+	     <xsd:element name="serviceInfo"			nillable="true"  type="tns:ServiceInfo"/>
+	  </xsd:sequence>
+      </xsd:complexType>
+
+
+      <xsd:element name="SetUpRequest" type="tns:SetUpReq"/>
+
+</xsd:schema>

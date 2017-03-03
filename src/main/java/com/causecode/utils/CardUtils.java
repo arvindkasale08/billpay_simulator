@@ -1,0 +1,28 @@
+package com.causecode.utils;
+
+public class CardUtils {
+	
+	public static String maskCardNumber(String cardNumber, String mask) {
+
+	    // format the number
+	    int index = 0;
+	    StringBuilder maskedNumber = new StringBuilder();
+	    for (int i = 0; i < mask.length(); i++) {
+	        char c = mask.charAt(i);
+	        if (c == '#') {
+	            maskedNumber.append(cardNumber.charAt(index));
+	            index++;
+	        } else if (c == 'x') {
+	            maskedNumber.append(c);
+	            index++;
+	        } else {
+	            maskedNumber.append(c);
+	            index++;
+	        }
+	    }
+
+	    // return the masked number
+	    return maskedNumber.toString();
+	}
+
+}

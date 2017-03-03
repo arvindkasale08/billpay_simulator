@@ -1,0 +1,36 @@
+<div class="col-md-12 min-height-600">
+
+	<div class="col-md-10">
+		<div class="form-group col-md-8 pull-right">
+			<input required type="text" ng-model="vm.card.url" name="url" class="form-control" id="url" placeholder="Copy Return Url from SOAP UI.">
+		</div>
+		<div class="form-group col-md-8 pull-right">
+			<input required type="text" ng-model="vm.card.token" name="token" class="form-control" id="token" placeholder="Token">
+		</div>
+		<legend >Register Card</legend>
+		<form class="col-md-4" name="store">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input required type="text" ng-model="vm.card.name" name="name" class="form-control" id="name">
+				<span class="form-info">Exactly as it appears on card. </span>
+			</div>
+			<div class="form-group">
+				<label for="number">CC Number:</label>
+				<input required type="text" ng-model="vm.card.number" name="number" class="form-control" id="number" placeholder="xxxx-xxxx-xxxx-xxxx">
+				<span class="form-info">VISA / MasterCard. </span>
+			</div>
+			<div class="form-group">
+				<label for="number">Expiry:</label>
+				<input required type="text" ng-model="vm.card.expiry" name="number" class="form-control" id="expiry" placeholder="" class="col-md-4">
+				<span class="form-info">month / year. </span>
+			</div>
+			<div class="form-group">
+				<label for="cvv">CVV:</label>
+				<input required type="text" ng-model="vm.card.cvv" name="cvv" class="form-control" id="cvv" placeholder="xxx">
+				<span class="form-info">3 digit CVV. </span>
+			</div>
+			<button ng-click="vm.saveCard()" type="submit" class="	btn btn-success">Save</button>
+		</form>
+	</div>
+
+</div>

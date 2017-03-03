@@ -1,0 +1,62 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!--
+ * $Workfile:   SetUpResponse.xsd  $
+ * $Header:   S:/tservdev/scm/billpay/archive/java/setup_v1_0/Schemas/SetUpResponse.xsv   1.0   24 Oct 2011 20:15:00   d322042  $
+ * $Modtime:   22 Sep 2011 20:18:18  $
+ * $Log:   S:/tservdev/scm/billpay/archive/java/setup_v1_0/Schemas/SetUpResponse.xsv  $
+#  
+#     Rev 1.0   24 Oct 2011 20:15:00   d322042
+#  Initial revision.
+#  
+#    
+-->
+<xsd:schema targetNamespace = "http://telstra.com/payments/gimmi/setup/SetUpResponse"
+	    xmlns:tns = "http://telstra.com/payments/gimmi/setup/SetUpResponse"
+	    xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+	    elementFormDefault = "qualified"
+	    version="1.00">
+
+      <xsd:complexType name="Header">
+     <xsd:sequence>
+	    <xsd:element name="serviceDomain"			nillable="false" type="xsd:string"/>
+	    <xsd:element name="serviceClass"			nillable="false" type="xsd:string"/>
+            <xsd:element name="serviceId"     			nillable="false" type="xsd:string"/>
+            <xsd:element name="organisationId"			nillable="false" type="xsd:string"/>
+	    <xsd:element name="systemId"			nillable="false" type="xsd:string"/>
+	    <xsd:element name="subSystemId"			nillable="false" type="xsd:string"/>
+            <xsd:element name="user"				nillable="true"  type="xsd:string"/>
+            <xsd:element name="userType"			nillable="true"  type="xsd:string"/>
+	    <xsd:element name="crn"				nillable="true"  type="xsd:string"/>
+            <xsd:element name="version"				nillable="false" type="xsd:string"/>            
+	    <xsd:element name="timestamp"			nillable="false" type="xsd:dateTime"/>
+      </xsd:sequence>
+      </xsd:complexType>    
+
+      <xsd:complexType name="GimmiSegment">
+      <xsd:sequence>    
+             <xsd:element name="billPayTokenID"			nillable="true" type="xsd:string"/>
+             <xsd:element name="billPayRedirectURL"		nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="GimmiResult">
+	 <xsd:sequence>    
+             <xsd:element name="resultState"			nillable="false" type="xsd:string"/>
+             <xsd:element name="reasonCode"			nillable="false" type="xsd:string"/>
+	     <xsd:element name="reasonText"			nillable="false" type="xsd:string"/>
+	 </xsd:sequence>
+      </xsd:complexType>      
+
+
+     <xsd:complexType name="SetUpRes">
+        <xsd:sequence>
+	     <xsd:element name="header"				nillable="false" type="tns:Header"/>
+	     <xsd:element name="gimmiResult"			nillable="false" type="tns:GimmiResult"/>
+             <xsd:element name="gimmiSegment"			nillable="true"  type="tns:GimmiSegment"/>
+        </xsd:sequence>
+     </xsd:complexType>
+
+
+     <xsd:element name="SetUpResponse" type="tns:SetUpRes"/>
+
+</xsd:schema>

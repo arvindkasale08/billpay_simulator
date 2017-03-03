@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * $Workfile:   enquiry.wsdl  $
+ * $Header:   S:/tservdev/scm/billpay/archive/java/enquiry_v1_0/enquiry.wsvl   1.0   24 Oct 2011 20:22:16   d322042  $
+ * $Modtime:   14 Sep 2011 19:18:20  $
+ * $Log:   S:/tservdev/scm/billpay/archive/java/enquiry_v1_0/enquiry.wsvl  $
+ * 
+ *    Rev 1.0   24 Oct 2011 20:22:16   d322042
+ * Initial revision.
+-->
+
+<!-- **************************************************************************** -->
+<!--										  -->
+<!--  This is the Enquiry interface for Payment/Registration transactions.	  -->
+<!--										  -->
+<!--  It includes the following methods:					  -->
+<!--                                                             		  -->
+<!--  EnquiryResponse processEnquiry(EnquiryRequest  request );   -->
+<!--										  -->
+<!-- **************************************************************************** -->
+<wsdl:definitions targetNamespace="http://telstra.com/payments/gimmi/enquiry"
+                  xmlns:tns="http://telstra.com/payments/gimmi/enquiry"
+		  xmlns:tns1="http://telstra.com/payments/gimmi/enquiry/EnquiryRequest"
+                  xmlns:tns2="http://telstra.com/payments/gimmi/enquiry/EnquiryResponse"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+		  xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+    <!-- *********************************************************** -->
+    <!--                          Documentation                      -->
+    <!-- *********************************************************** -->
+    <wsdl:documentation>
+	<version>1.00</version>
+    </wsdl:documentation>
+
+
+    <!-- *********************************************************** -->
+    <!--                          Types                              -->
+    <!-- *********************************************************** -->
+    <wsdl:types>
+
+       <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://telstra.com/payments/gimmi/enquiry">
+            <xsd:import namespace="http://telstra.com/payments/gimmi/enquiry/EnquiryRequest"
+		                   schemaLocation="Schemas/EnquiryRequest.xsd"/>
+        </xsd:schema>
+
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://telstra.com/payments/gimmi/enquiry">
+            <xsd:import namespace="http://telstra.com/payments/gimmi/enquiry/EnquiryResponse" 
+	                   schemaLocation="Schemas/EnquiryResponse.xsd"/>
+        </xsd:schema>
+
+    </wsdl:types>
+
+
+    <!-- *********************************************************** -->
+    <!--                         Messages                            -->
+    <!-- *********************************************************** -->
+    <wsdl:message name="enquRequestMessage">
+        <wsdl:part name="request"  element="tns1:EnquiryRequest"/>
+    </wsdl:message>
+    <wsdl:message name="enquResponseMessage">
+        <wsdl:part name="response" element="tns2:EnquiryResponse"/>
+    </wsdl:message>
+
+    <!-- *********************************************************** -->
+    <!--                         Port Types                          -->
+    <!-- *********************************************************** -->
+    <wsdl:portType name="Enquiry">
+
+        <wsdl:operation name="processEnquiry">
+            <wsdl:input  message="tns:enquRequestMessage"/>
+            <wsdl:output message="tns:enquResponseMessage"/>
+        </wsdl:operation>
+    
+    </wsdl:portType>
+
+    <!-- *********************************************************** -->
+    <!--                          Bindings                           -->
+    <!-- *********************************************************** -->
+    <wsdl:binding name="Enquiry_SOAP_Binding" type="tns:Enquiry">
+
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="processEnquiry">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input>
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <!-- *********************************************************** -->
+    <!--                          Services                           -->
+    <!-- *********************************************************** -->
+    <wsdl:service name="Enquiry_Service">
+        <wsdl:port name="Enquiry_Service" binding="tns:Enquiry_SOAP_Binding">
+            <wsdlsoap:address location="http://localhost"/>
+        </wsdl:port>
+   </wsdl:service>
+
+</wsdl:definitions>

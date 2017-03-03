@@ -1,0 +1,58 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!--
+ * $Workfile:   EnquiryRequest.xsd  $
+ * $Header:   S:/tservdev/scm/billpay/archive/java/enquiry_v1_0/Schemas/EnquiryRequest.xsv   1.0   24 Oct 2011 20:22:26   d322042  $
+ * $Modtime:   09 Oct 2011 16:56:14  $
+ * $Log:   S:/tservdev/scm/billpay/archive/java/enquiry_v1_0/Schemas/EnquiryRequest.xsv  $
+ *  
+ *     Rev 1.0   24 Oct 2011 20:22:26   d322042
+ *  Initial revision.
+-->
+<xsd:schema targetNamespace = "http://telstra.com/payments/gimmi/enquiry/EnquiryRequest"
+	    xmlns:tns = "http://telstra.com/payments/gimmi/enquiry/EnquiryRequest"
+	    xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+	    elementFormDefault = "qualified"
+	    version="1.00">
+
+     <xsd:complexType name="Header">
+     <xsd:sequence>
+	    <xsd:element name="serviceDomain"			nillable="false" type="xsd:string"/>
+	    <xsd:element name="serviceClass"			nillable="false" type="xsd:string"/>
+            <xsd:element name="serviceId"     			nillable="false" type="xsd:string"/>
+            <xsd:element name="organisationId"			nillable="false" type="xsd:string"/>
+	    <xsd:element name="systemId"			nillable="false" type="xsd:string"/>
+	    <xsd:element name="subSystemId"			nillable="false" type="xsd:string"/>
+            <xsd:element name="user"				nillable="true"  type="xsd:string"/>
+            <xsd:element name="userType"			nillable="true"  type="xsd:string"/>
+	    <xsd:element name="crn"				nillable="true"  type="xsd:string"/>
+            <xsd:element name="version"				nillable="false" type="xsd:string"/>            
+	    <xsd:element name="timestamp"			nillable="false" type="xsd:dateTime"/>
+	    <xsd:element name="security"			nillable="true"  type="tns:Security"/>
+      </xsd:sequence>
+      </xsd:complexType>
+       
+      <xsd:complexType name="Security">
+      <xsd:sequence>
+             <xsd:element name="serverId"			nillable="true"  type="xsd:string"/>
+	     <xsd:element name="systemSecurityToken"		nillable="true"  type="xsd:string"/>
+             <xsd:element name="userSecurityToken"		nillable="true"  type="xsd:string"/>
+      </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="EnquirySegment">
+	<xsd:sequence>    
+             <xsd:element name="consumerReferenceID"		nillable="false" type="xsd:string"/>
+   	</xsd:sequence>
+      </xsd:complexType>
+
+
+      <xsd:complexType name="EnqRequest">
+	 <xsd:sequence>
+	     <xsd:element name="header"	        		nillable="false" type="tns:Header"/>
+	     <xsd:element name="enquirySegment"			nillable="false" type="tns:EnquirySegment"/>
+	  </xsd:sequence>
+       </xsd:complexType>
+     
+     <xsd:element name="EnquiryRequest" type="tns:EnqRequest"/>
+
+</xsd:schema>

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	default-lazy-init="true"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	default-lazy-init="true" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://cxf.apache.org/configuration/beans http://cxf.apache.org/schemas/configuration/cxf-beans.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
@@ -21,7 +24,27 @@
 	<resources mapping="/web-resources/**" location="/resources/" />
 
 
-
+	<jaxws:endpoint id="setupService"
+        implementor="com.billpay.service.SetupServiceImpl"
+        address="/setup">
+    </jaxws:endpoint>
+    
+    <jaxws:endpoint id="enquiryService"
+        implementor="com.billpay.service.EnquiryServiceImpl"
+        address="/enquiry">
+    </jaxws:endpoint>
+    
+    <jaxws:endpoint id="manageService"
+        implementor="com.billpay.service.ManageServiceImpl"
+        address="/manage">
+    </jaxws:endpoint>
+    
+    <jaxws:endpoint id="paymentService"
+        implementor="com.billpay.service.PaymentServiceImpl"
+        address="/payment">
+    </jaxws:endpoint>
+    
+    
 
 
 

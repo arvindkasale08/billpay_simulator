@@ -12,6 +12,8 @@
 		<springframework.version>4.3.1.RELEASE</springframework.version>
 		<hibernate-version>4.3.11.Final</hibernate-version>
 		<jackson.version>2.7.5</jackson.version>
+		<cxf.version>3.0.2</cxf.version>
+		<cxf.scope>compile</cxf.scope>
 	</properties>
 
 	<dependencies>
@@ -30,6 +32,19 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>4.0.3.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+			<scope>${cxf.scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+			<scope>${cxf.scope}</scope>
+		</dependency>
+
 		<!-- Apache DBCP -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -99,6 +114,29 @@
 					<warName>store-locator</warName>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<version>3.0.2</version>
+				<executions>
+					<execution>
+						<configuration>
+							<sourceRoot>${basedir}/generated/java/source</sourceRoot>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>${basedir}/src/main/webapp/resources/wsdl/setup.wsdl</wsdl>
+									<wsdl>${basedir}/src/main/webapp/resources/wsdl/enquiry.wsdl</wsdl>
+									<wsdl>${basedir}/src/main/webapp/resources/wsdl/Manage.wsdl</wsdl>
+									<wsdl>${basedir}/src/main/webapp/resources/wsdl/Payment_v4_0.wsdl</wsdl>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 		<finalName>store-locator</finalName>

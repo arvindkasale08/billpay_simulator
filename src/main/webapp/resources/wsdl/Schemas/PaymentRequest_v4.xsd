@@ -1,0 +1,127 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!--
+ * $Workfile:      $
+ * $Header:        $
+ * $Modtime:       $
+ * $Log:           $
+ *
+-->
+<xsd:schema targetNamespace = "http://telstra.com/payments/payment/v4/PaymentRequest"
+	    xmlns:tns = "http://telstra.com/payments/payment/v4/PaymentRequest"
+	    xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+	    elementFormDefault = "qualified"
+	    version="1.00">
+
+     <xsd:complexType name="Header">
+     	 <xsd:sequence>
+	    <xsd:element name="serviceDomain"			nillable="false" type="xsd:string"/>
+	    <xsd:element name="serviceClass"			nillable="false" type="xsd:string"/>
+            <xsd:element name="serviceId"     			nillable="false" type="xsd:string"/>
+            <xsd:element name="organisationId"			nillable="false" type="xsd:string"/>        
+	    <xsd:element name="systemId"			nillable="false" type="xsd:string"/>
+	    <xsd:element name="subsystemId"			nillable="false" type="xsd:string"/>
+            <xsd:element name="user"				nillable="true"  type="xsd:string"/>
+            <xsd:element name="userType"			nillable="true"  type="xsd:string"/>
+	    <xsd:element name="crn"				nillable="true"  type="xsd:string"/>
+            <xsd:element name="version"				nillable="false" type="xsd:string"/>            
+	    <xsd:element name="timestamp"			nillable="false" type="xsd:dateTime"/>
+	    <xsd:element name="security"			nillable="true"  type="tns:Security"/>
+      	 </xsd:sequence>
+      </xsd:complexType>       
+
+      <xsd:complexType name="Security">
+      	 <xsd:sequence>
+             <xsd:element name="serverId"			nillable="true" type="xsd:string"/>
+	     <xsd:element name="systemSecurityToken"		nillable="true" type="xsd:string"/>
+             <xsd:element name="userSecurityToken"		nillable="true" type="xsd:string"/>
+      	 </xsd:sequence>
+      </xsd:complexType>
+
+       <xsd:complexType name="FIMetaData">
+      <xsd:sequence>
+	     <xsd:element name="finInstrumentType"		nillable="false" type="xsd:string"/>
+             <xsd:element name="finInstrumentReferenceType"	nillable="true" type="xsd:string"/>
+             <xsd:element name="finInstrumentReference"		nillable="true" type="xsd:string"/>
+             <xsd:element name="finInstrumentInstance"		nillable="true"  type="xsd:string"/>
+	     <xsd:element name="billPayMerchantID"		nillable="true"  type="xsd:string"/>
+      </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="PaymentMetaData">
+      	 <xsd:sequence>
+	     <xsd:element name="paymentType"	        	nillable="false" type="xsd:string"/>
+	     <xsd:element name="finInstrumentPresence"  	nillable="false" type="xsd:string"/>
+             <xsd:element name="finInstrumentReferenceType"  	nillable="true"  type="xsd:string"/>
+             <xsd:element name="finInstrumentReference"      	nillable="true"  type="xsd:string"/>
+             <xsd:element name="finInstrumentInstance"  	nillable="true"  type="xsd:string"/>
+             <xsd:element name="amount"		        	nillable="false" type="xsd:string"/>
+	     <xsd:element name="doDuplicateCheck"		nillable="false" type="xsd:string"/>
+	     <xsd:element name="priority"			nillable="true"  type="xsd:string"/>
+	     <xsd:element name="billPayMerchantID"      	nillable="true"  type="xsd:string"/>
+	     <xsd:element name="rrn"		        	nillable="true"  type="xsd:string"/>
+	     <xsd:element name="statement"              	nillable="true"  type="xsd:string"/>
+	     <xsd:element name="authId"		        	nillable="true"  type="xsd:string"/>
+      	 </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="CreditCardDetails">
+      	 <xsd:sequence>
+             <xsd:element name="cardNo"		    		nillable="true"  type="xsd:string"/>
+	     <xsd:element name="expiryMonth"        		nillable="true"  type="xsd:string"/>
+	     <xsd:element name="expiryYear"         		nillable="true"  type="xsd:string"/>
+             <xsd:element name="nameOnCard"         		nillable="true"  type="xsd:string"/>
+	     <xsd:element name="creditCardHolderFirstName"	nillable="true"  type="xsd:string"/>
+	     <xsd:element name="creditCardHolderLastName"	nillable="true"  type="xsd:string"/>
+	     <xsd:element name="cvc"				nillable="true"  type="xsd:string"/>
+      	 </xsd:sequence>
+      </xsd:complexType>
+
+       <xsd:complexType name="BankAccountDetails">
+      <xsd:sequence>
+	    <xsd:element name="agreedTAC"           		nillable="true" type="xsd:string"/>
+	    <xsd:element name="fiName"         	   		nillable="true" type="xsd:string"/>
+	    <xsd:element name="fiBranch"            		nillable="true" type="xsd:string"/>
+	    <xsd:element name="bsb"         	    		nillable="true" type="xsd:string"/>
+	    <xsd:element name="bankAccountNumber"   		nillable="true" type="xsd:string"/>
+	    <xsd:element name="bankAccountName"     		nillable="true" type="xsd:string"/>
+	    <xsd:element name="accountHolderFirstName"   	nillable="true" type="xsd:string"/>
+	    <xsd:element name="accountHolderLastName"   	nillable="true" type="xsd:string"/>
+	    <xsd:element name="tacAgreedDateTime"   		nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+      </xsd:complexType>
+
+
+      <xsd:complexType name="ServiceInfo">
+      	 <xsd:sequence>
+	     <xsd:element name="accountNumber"			nillable="false" type="xsd:string"/>
+	     <xsd:element name="billNumber"			nillable="true"  type="xsd:string"/>
+	     <xsd:element name="secondaryNumber"		nillable="true"  type="xsd:string"/>
+      	 </xsd:sequence>
+      </xsd:complexType>
+      
+      <xsd:complexType name="PaymentSecurity">
+      	 <xsd:sequence>
+             <xsd:element name="xid"		    		nillable="true"  type="xsd:string"/>
+      	     <xsd:element name="eci"        	    		nillable="true"  type="xsd:string"/>
+      	     <xsd:element name="ver"         	    		nillable="true"  type="xsd:string"/>
+             <xsd:element name="par"         	    		nillable="true"  type="xsd:string"/>
+      	     <xsd:element name="cavv"  				nillable="true"  type="xsd:string"/>   	     
+         </xsd:sequence>
+      </xsd:complexType>
+
+
+     <xsd:complexType name="FinancialRequest">
+	 <xsd:sequence>
+	     <xsd:element name="header"	        		nillable="false"  type="tns:Header"/>
+	     <xsd:element name="fiMetaData"    			nillable="false"  type="tns:FIMetaData"/>
+	     <xsd:element name="paymentData"    		nillable="false"  type="tns:PaymentMetaData"/>
+	     <xsd:element name="creditCard"     		nillable="true"   type="tns:CreditCardDetails"/>
+	     <xsd:element name="serviceInfo"    		nillable="false"  type="tns:ServiceInfo"/>
+	     <xsd:element name="paymentSecurity"    		nillable="true"   type="tns:PaymentSecurity"/>
+	     <xsd:element name="bankAccountDetails"		nillable="true"   type="tns:BankAccountDetails"/>
+	  </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:element name="PaymentRequest" type="tns:FinancialRequest"/>
+
+</xsd:schema>

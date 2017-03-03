@@ -1,0 +1,68 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!--
+ * $Workfile:       $
+ * $Header:         $
+ * $Modtime:        $
+ * $Log:            $
+ *
+-->
+
+<xsd:schema targetNamespace = "http://telstra.com/payments/payment/v4/PaymentResponse"
+	    xmlns:tns = "http://telstra.com/payments/payment/v4/PaymentResponse"
+	    xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+	    elementFormDefault = "qualified"
+	    version="1.00">
+
+     <xsd:complexType name="Header">
+     	<xsd:sequence>
+	    <xsd:element name="serviceDomain"			nillable="true"  type="xsd:string"/>
+	    <xsd:element name="serviceClass"			nillable="true"  type="xsd:string"/>
+            <xsd:element name="serviceId"			nillable="true"  type="xsd:string"/>
+	    <xsd:element name="organisationId"			nillable="true"  type="xsd:string"/>            
+	    <xsd:element name="systemId"			nillable="true"  type="xsd:string"/>
+	    <xsd:element name="subsystemId"			nillable="true"  type="xsd:string"/>	    
+            <xsd:element name="user"				nillable="true"  type="xsd:string"/>
+            <xsd:element name="userType"			nillable="true"  type="xsd:string"/>
+	    <xsd:element name="crn"				nillable="true"  type="xsd:string"/>
+            <xsd:element name="version"				nillable="true"  type="xsd:string"/>            
+	    <xsd:element name="timestamp"			nillable="false" type="xsd:dateTime"/>
+      	 </xsd:sequence>
+      </xsd:complexType>       
+
+      <xsd:complexType name="ResultStatus">
+      	 <xsd:sequence>
+             <xsd:element name="tranStatus"			nillable="false" type="xsd:int"/>
+             <xsd:element name="responseCode"			nillable="true" type="xsd:string"/>
+             <xsd:element name="responseText"			nillable="true" type="xsd:string"/>             
+      	 </xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="TransactionResults">
+      	 <xsd:sequence>    
+             <xsd:element name="brn"				nillable="true"  type="xsd:string"/>
+             <xsd:element name="authId"				nillable="true"  type="xsd:string"/>
+	     <xsd:element name="settlementDate"			nillable="true"  type="xsd:string"/>
+             <xsd:element name="translatedPan"			nillable="true"  type="xsd:string"/>
+             <xsd:element name="originalResponse"		minOccurs="0" nillable="true" type="tns:FinancialResponse"/>
+      	 </xsd:sequence>
+      </xsd:complexType>
+      
+      <xsd:complexType name="TopUpResults">
+          <xsd:sequence>
+              <xsd:element name="currentBalance"		nillable="true" type="xsd:int"/>
+              <xsd:element name="creditExpiryDate"		nillable="true" type="xsd:string"/>                       
+          </xsd:sequence>
+      </xsd:complexType>
+      
+     <xsd:complexType name="FinancialResponse">
+        <xsd:sequence>
+	     <xsd:element name="header"				nillable="false" type="tns:Header"/>
+	     <xsd:element name="resultStatus"			nillable="false" type="tns:ResultStatus"/>
+             <xsd:element name="tranResults"			nillable="true"  type="tns:TransactionResults"/>
+             <xsd:element name="topUpResults"			nillable="true"  type="tns:TopUpResults"/>
+	  </xsd:sequence>
+      </xsd:complexType>
+      	
+     <xsd:element name="PaymentResponse" type="tns:FinancialResponse"/>
+
+</xsd:schema>

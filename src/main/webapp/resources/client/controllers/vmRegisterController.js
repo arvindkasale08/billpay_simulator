@@ -12,8 +12,10 @@
       cvv : '312',
       expiry : '1/2018'
     };
+    
     vm.card.token = $location.search().token;
-    vm.card.url = $location.search().url;
+    vm.card.url = decodeURIComponent($location.absUrl().split('url%3D')[1]);
+    console.log(decodeURIComponent(vm.card.url));
     vm.saveCard = function() {
       CardService.saveCard(vm).then(function(response){
         console.log("Redirecting to url " + response.data.url);

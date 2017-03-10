@@ -14,7 +14,7 @@
     };
     
     vm.card.token = $location.search().token;
-    vm.card.url = decodeURIComponent($location.absUrl().split('url%3D')[1]);
+    vm.card.url = decodeURIComponent($location.absUrl().split('url=')[1]);
     console.log(decodeURIComponent(vm.card.url));
     vm.saveCard = function() {
       CardService.saveCard(vm).then(function(response){

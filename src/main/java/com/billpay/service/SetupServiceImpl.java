@@ -28,7 +28,7 @@ import com.telstra.payments.gimmi.setup.setupresponse.SetUpRes;
 @WebService(serviceName="SetupService")
 public class SetupServiceImpl implements SetUp{
 	
-	private final String returnUrl = "http://localhost:5050/store-locator/#/bill-pay/register?token=";
+	private final String returnUrl = "http://localhost:5050/store-locator/card/redirect";
 
 	@Autowired
 	CardService service;
@@ -61,7 +61,8 @@ public class SetupServiceImpl implements SetUp{
 		response.setGimmiResult(result);
 		
 		GimmiSegment segment = new GimmiSegment();
-		segment.setBillPayRedirectURL(returnUrl+uuid+"&url="+request.getGimmiConsumerSegment().getConsumerReturnURL());
+		//segment.setBillPayRedirectURL(returnUrl+uuid+"&url="+request.getGimmiConsumerSegment().getConsumerReturnURL());
+		segment.setBillPayRedirectURL(returnUrl);
 		segment.setBillPayTokenID(uuid);
 		response.setGimmiSegment(segment);
 		
@@ -71,7 +72,7 @@ public class SetupServiceImpl implements SetUp{
 	private void populateMap(SetUpReq request, String uuid) {
 		// TODO Auto-generated method stub
 		Map<String, Card> map = service.getMap();
-		String key = request.getFiMetaData().getFinInstrumentReference() + "|" + uuid;
+		String key = request.getFiMetaData().getFinInstrumentReference() + "~" + uuid + "~" + request.getGimmiConsumerSegment().getConsumerReturnURL();
 		map.put(key, null);
 	}
 
